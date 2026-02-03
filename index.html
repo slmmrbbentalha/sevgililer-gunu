@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Talha ♥ Ayan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#0f0820; --bg1:#1b1024;
+      --rose:#ff4d6d; --rose2:#ff8fab; --blush:#ffd6e0;
+      --text:#f7eef5; --muted:rgba(247,238,245,.76);
+      --card:rgba(255,255,255,.08); --border:rgba(255,255,255,.12);
+      --shadow:0 18px 70px rgba(0,0,0,.35);
+      --r:22px; --max:1040px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 620px at 15% 10%, rgba(255,77,109,.28), transparent 60%),
+        radial-gradient(980px 560px at 90% 20%, rgba(255,143,171,.22), transparent 55%),
+        radial-gradient(1000px 700px at 45% 95%, rgba(255,214,224,.14), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+    header{padding:48px 0 14px}
+    h1{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(34px,4.5vw,58px);
+      line-height:1.05; margin:14px 0 10px;
+    }
+    .lead{color:var(--muted);font-size:18px;line-height:1.6;margin:0 0 16px}
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch}
+
+    .chip{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06); color:var(--muted);
+      width:fit-content;
+    }
+    .dot{width:10px;height:10px;border-radius:99px;background:var(--rose);box-shadow:0 0 0 6px rgba(255,77,109,.18)}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 16px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--text);font-weight:800;
+      transition:.15s ease; cursor:pointer; user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+    .btn.primary{
+      border:none;color:#1a0f24;
+      background:linear-gradient(135deg,var(--rose),var(--rose2));
+      box-shadow:0 18px 50px rgba(255,77,109,.25);
+    }
+
+    .panel{
+      border-radius:var(--r); background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow); overflow:hidden; position:relative;
+    }
+    .panel:before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 260px at 20% 10%, rgba(255,77,109,.20), transparent 55%),
+        radial-gradient(420px 260px at 90% 30%, rgba(255,214,224,.16), transparent 55%);
+      pointer-events:none;
+    }
+    .p{position:relative;padding:18px}
+
+    section{padding:30px 0}
+    h2{
+      font-family:"Playfair Display",serif;
+      margin:0 0 10px;
+      font-size:clamp(22px,2.8vw,34px);
+    }
+    .muted{color:var(--muted);line-height:1.65;margin:0}
+
+    .count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+    .pill{
+      border-radius:16px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      padding:12px;text-align:center;
+    }
+    .pill .n{font-size:22px;font-weight:900}
+    .pill .t{font-size:12px;color:var(--muted);margin-top:4px}
+
+    .grid{display:grid;gap:12px}
+    .timeline{grid-template-columns:repeat(2,1fr)}
+    .card{
+      padding:16px;border-radius:var(--r);
+      background:var(--card);border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+    .k{font-size:12px;color:var(--muted);letter-spacing:.3px;text-transform:uppercase}
+    .v{font-size:18px;font-weight:900;margin-top:6px}
+
+    /* 8'li galeri */
+    .gallery{grid-template-columns:repeat(4,1fr)}
+    .ph{
+      border-radius:18px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      aspect-ratio:1/1;
+      display:grid; place-items:center;
+      position:relative;
+    }
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;opacity:.95;cursor:zoom-in}
+    .ph span{
+      position:absolute;left:10px;right:10px;bottom:10px;
+      font-size:12px;color:rgba(255,255,255,.92);
+      text-shadow:0 10px 30px rgba(0,0,0,.55);
+    }
+
+    /* 10 şey listesi */
+    ol.loveList{
+      margin:14px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+      counter-reset:item;
+    }
+    ol.loveList li{
+      counter-increment:item;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+    }
+    ol.loveList li::before{
+      content: counter(item);
+      width:32px;height:32px;flex:0 0 auto;
+      border-radius:14px;
+      display:grid;place-items:center;
+      font-weight:900;
+      color:#1a0f24;
+      background:linear-gradient(135deg,var(--rose),var(--rose2));
+      box-shadow:0 14px 40px rgba(255,77,109,.18);
+    }
+    .liTitle{font-weight:900}
+    .liDesc{color:var(--muted);line-height:1.55;margin-top:2px;font-size:13px}
+
+    .final{
+      text-align:center; padding:34px 18px;
+      border-radius:calc(var(--r) + 6px);
+      border:1px solid rgba(255,77,109,.35);
+      background:linear-gradient(180deg, rgba(255,77,109,.14), rgba(255,255,255,.04));
+      box-shadow:0 24px 90px rgba(255,77,109,.12);
+    }
+    .heart{
+      width:70px;height:70px;margin:0 auto 12px;
+      background:linear-gradient(135deg,var(--rose),var(--rose2));
+      border-radius:20px; transform:rotate(8deg);
+      box-shadow:0 18px 60px rgba(255,77,109,.25);
+      position:relative;
+    }
+    .heart:before{content:"";position:absolute;inset:14px;border-radius:16px;background:rgba(255,255,255,.22)}
+
+    footer{padding:22px 0 40px;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,.08)}
+
+    /* mini music player */
+    .player{
+      position:fixed; left:14px; bottom:14px; z-index:60;
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      padding:10px 12px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(15,8,32,.55);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+    .player .lbl{font-size:12px;color:var(--muted)}
+    .tiny{font-size:12px;color:var(--muted)}
+    input[type="range"]{accent-color: var(--rose);}
+
+    /* Lock screen */
+    .lock{
+      position:fixed; inset:0; z-index:200;
+      display:grid; place-items:center;
+      background:
+        radial-gradient(900px 520px at 20% 20%, rgba(255,77,109,.25), transparent 60%),
+        radial-gradient(900px 520px at 80% 30%, rgba(255,143,171,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+    .lockCard{
+      width:min(560px, 92vw);
+      padding:18px;
+      border-radius:calc(var(--r) + 6px);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      transform: translateY(0);
+      transition: transform .18s ease;
+    }
+    .lockCard.shake{animation: shake .28s ease;}
+    @keyframes shake{
+      0%{transform:translateX(0)}
+      25%{transform:translateX(-6px)}
+      50%{transform:translateX(6px)}
+      75%{transform:translateX(-4px)}
+      100%{transform:translateX(0)}
+    }
+    .welcomeTop{
+      text-align:center;
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size:18px;
+      margin:4px 0 10px;
+    }
+    .welcomeTop span{color:var(--blush)}
+    .pwInput{
+      flex:1;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      padding:12px 14px;
+      outline:none;
+      font-weight:800;
+      letter-spacing:3px;
+    }
+    .pwInput:focus{border-color: rgba(255,143,171,.55)}
+    .pwHint{text-align:center;margin-top:10px;min-height:20px;}
+
+    /* New flower section */
+    .flower{
+      display:grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .flowerImg{
+      border-radius:calc(var(--r) + 6px);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      min-height: 240px;
+    }
+    .flowerImg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.95;
+    }
+    .flowerText{
+      border-radius:calc(var(--r) + 6px);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .flowerText:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 260px at 20% 10%, rgba(255,77,109,.16), transparent 55%),
+        radial-gradient(420px 260px at 90% 30%, rgba(255,214,224,.14), transparent 55%);
+      pointer-events:none;
+    }
+    .flowerText .inner{position:relative}
+    .quote{
+      margin-top:10px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.12);
+      color:rgba(255,255,255,.92);
+      line-height:1.7;
+    }
+
+    /* 16 Kelime Grid */
+    .words16{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin-top:14px;
+    }
+    .wordBox{
+      padding:16px 12px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      text-align:center;
+      font-weight:900;
+      font-size:15px;
+      line-height:1.3;
+      transition:.15s ease;
+    }
+    .wordBox:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.10);
+      border-color:rgba(255,143,171,.35);
+    }
+
+    /* Animal section */
+    .animal{
+      display:grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .animalImg{
+      border-radius:calc(var(--r) + 6px);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      min-height: 240px;
+    }
+    .animalImg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.95;
+    }
+    .animalText{
+      border-radius:calc(var(--r) + 6px);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .animalText:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 260px at 20% 10%, rgba(255,77,109,.16), transparent 55%),
+        radial-gradient(420px 260px at 90% 30%, rgba(255,214,224,.14), transparent 55%);
+      pointer-events:none;
+    }
+    .animalText .inner{position:relative}
+
+    /* Story section */
+    .storyBox{
+      border-radius:calc(var(--r) + 6px);
+      border:1px solid rgba(255,77,109,.25);
+      background:linear-gradient(180deg, rgba(255,77,109,.10), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      padding:24px;
+      position:relative;
+      overflow:hidden;
+    }
+    .storyBox:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(620px 320px at 30% 20%, rgba(255,77,109,.18), transparent 60%),
+        radial-gradient(520px 280px at 80% 40%, rgba(255,214,224,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .storyBox .inner{position:relative}
+    .storyText{
+      color:var(--text);
+      line-height:1.85;
+      font-size:16px;
+      margin-top:12px;
+      text-align:justify;
+    }
+
+    /* Lightbox */
+    .lb{
+      position:fixed; inset:0; z-index:120;
+      display:none;
+      background:rgba(0,0,0,.72);
+      backdrop-filter: blur(10px);
+    }
+    .lb.show{display:block;}
+    #lbImg{
+      position:absolute; left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      max-width:min(92vw, 980px);
+      max-height:82vh;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 30px 120px rgba(0,0,0,.55);
+    }
+    .lbBtn{
+      position:absolute;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.10);
+      color:var(--text);
+      border-radius:16px;
+      padding:10px 12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .lbBtn:hover{background:rgba(255,255,255,.16)}
+    .lbClose{right:14px; top:14px;}
+    .lbPrev{left:14px; top:50%; transform:translateY(-50%); font-size:26px; padding:10px 14px;}
+    .lbNext{right:14px; top:50%; transform:translateY(-50%); font-size:26px; padding:10px 14px;}
+    .lbCap{
+      position:absolute; left:50%; bottom:18px; transform:translateX(-50%);
+      color:rgba(255,255,255,.9);
+      font-size:13px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(15,8,32,.55);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr}
+      .timeline{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .flower{grid-template-columns:1fr}
+      .animal{grid-template-columns:1fr}
+      .words16{grid-template-columns:repeat(2,1fr)}
+      .lbPrev,.lbNext{top:auto; bottom:80px; transform:none;}
+      .lbPrev{left:14px;}
+      .lbNext{right:14px;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Şifre ekranı -->
+  <div id="lock" class="lock">
+    <div class="lockCard" id="lockCard">
+      <div class="welcomeTop">Küçük bi <span>hoş geldin</span> Aşkım</div>
+
+      <div class="chip" style="margin:0 auto 12px"><span class="dot"></span> Özel Giriş</div>
+      <h2 style="text-align:center;margin:0 0 10px">Şifreyi gir</h2>
+
+      <div style="display:flex;gap:10px">
+        <input id="pw" inputmode="numeric" autocomplete="one-time-code" maxlength="6"
+               placeholder="••••••" class="pwInput" aria-label="Şifre">
+        <button class="btn primary" onclick="unlock()">Giriş</button>
+      </div>
+
+      <div class="muted pwHint" id="pwMsg"></div>
+    </div>
+  </div>
+
+  <!-- Background music (song.mp3) -->
+  <audio id="bgm" src="song.mp3" loop preload="auto"></audio>
+
+  <div class="player">
+    <button class="btn primary" id="playBtn" onclick="toggleMusic()">▶︎ Başlat</button>
+    <div>
+      <div style="font-weight:900">Şarkı</div>
+      <div class="lbl" id="musicState">Kapalı</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="tiny">Ses</span>
+      <input id="vol" type="range" min="0" max="1" step="0.01" value="0.55" oninput="setVol(this.value)"/>
+    </div>
+    <button class="btn" onclick="confetti()">💗</button>
+  </div>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="chip"><span class="dot"></span> Talha'dan Ayan'a</div>
+        <h1>İyi ki varsın, <span style="color:var(--blush)">Ayan</span>.</h1>
+        <p class="lead">
+          Tanıştığımız günden beri her şey daha güzel. Bu sayfa da sana küçük bir "iyi ki" hediyesi.
+        </p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn primary" href="#hikaye">Bizim Hikayemiz</a>
+          <a class="btn" href="#anilar">Fotoğraflarımız</a>
+          <a class="btn" href="#cicek">Nergis ve Sen</a>
+          <a class="btn" href="#kelimeler">16 Kelime ile Sen</a>
+          <a class="btn" href="#hayvan">Sana Benzeyen Hayvan</a>
+          <a class="btn" href="#liste">Sana Özel 10 Şey</a>
+          <a class="btn" href="#zaman">Bizim Zamanımız</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="p">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+            <div>
+              <div style="font-weight:900">Sevgililer Günü'ne</div>
+              <div class="muted" style="font-size:13px">14 Şubat 23:59'a geri sayım</div>
+            </div>
+            <span class="btn" style="padding:10px 12px" onclick="confetti()">Kalp yağmuru</span>
+          </div>
+          <div class="count">
+            <div class="pill"><div class="n" id="d">00</div><div class="t">Gün</div></div>
+            <div class="pill"><div class="n" id="h">00</div><div class="t">Saat</div></div>
+            <div class="pill"><div class="n" id="m">00</div><div class="t">Dakika</div></div>
+            <div class="pill"><div class="n" id="s">00</div><div class="t">Saniye</div></div>
+          </div>
+          <div class="muted" style="margin-top:12px;line-height:1.6">
+            "9 Kasım 2025'ten beri kalbimin evi sensin."
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Yeni bölüm: Bizim Hikayemiz -->
+  <section id="hikaye">
+    <div class="wrap">
+      <h2>Bizim Hikayemiz</h2>
+      <p class="muted">Her aşkın bir başlangıcı vardır… İşte bizimki.</p>
+
+      <div class="storyBox" style="margin-top:14px">
+        <div class="inner">
+          <div class="k">Talha & Ayan</div>
+          <div class="v" style="margin-top:6px">Bir Discord buluşmasından sonsuza...</div>
+
+          <div class="storyText">
+            Ayan, senle ilk tanışmamız Discord'da Tsuki sunucusundaydı. O an aynı vakitte aynı yerde bulunmamız hala mucize gibi. İlk Spotify profilini gördüğüm an zaten güzelliğinden mest olmuştum. Mizahın, şakaların falan çok ilgi çekiciydi. Ama bilirsin, insan sevdiği ile uğraşır. Senle uğraştıkça sana daha çok yakınlaşıyordum. Aramızdaki kavgacı bağ hoşuma gidiyordu.<br><br>
+            
+            Yakın sürede yakınlaştık, sevgili olduk. Çok güzel anlar geçirdik; ancak bazı talihsizlikler ve genç olmamız bizim yollarımızı ayırdı. Yaptığın hatalar oldu; dolayısıyla 6 ay boyunca bir kere bile pes etmeden beni elde etmek için çabaladın, sadık kaldın. Bu beni oldukça etkiledi ve senin için hayatımda ilk kez bir kırmızı çizgimi kaldırdım. Senle barıştım ve dünyanın en güzel kararıydı.<br><br>
+            
+            Senle konuştukça aşık oldum, daha da yakınlaştım, güldüm, eğlendim, ağladım, kızdım; ancak her şeyiyle mükemmel bir 3 ay geçirdik. Senle nice aylara, yıllara ve evliliğimize kadar ölüm bizi ayırana kadar beraber olmak istiyorum. Biliyorum ben kusurluyum, hatalıyım ve mükemmel değilim; ancak bu halimle bile beni sevebilen güzel sevgilime bu hediyeyi takdim ediyorum...<br><br>
+            
+            <span style="color:var(--blush);font-weight:900;font-size:18px">İyi ki varsın aşkım. 💗</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="anilar">
+    <div class="wrap">
+      <h2>Fotoğraflarımız</h2>
+      <p class="muted">Birlikte geçirdiğimiz en güzel anlar...</p>
+
+      <div class="grid gallery" style="margin-top:14px">
+        <div class="ph"><img src="1.jpg" data-full="1.jpg" alt="Foto 1" onerror="this.remove()"><span>1</span></div>
+        <div class="ph"><img src="2.jpg" data-full="2.jpg" alt="Foto 2" onerror="this.remove()"><span>2</span></div>
+        <div class="ph"><img src="3.jpg" data-full="3.jpg" alt="Foto 3" onerror="this.remove()"><span>3</span></div>
+        <div class="ph"><img src="4.jpg" data-full="4.jpg" alt="Foto 4" onerror="this.remove()"><span>4</span></div>
+        <div class="ph"><img src="5.jpg" data-full="5.jpg" alt="Foto 5" onerror="this.remove()"><span>5</span></div>
+        <div class="ph"><img src="6.jpg" data-full="6.jpg" alt="Foto 6" onerror="this.remove()"><span>6</span></div>
+        <div class="ph"><img src="7.jpg" data-full="7.jpg" alt="Foto 7" onerror="this.remove()"><span>7</span></div>
+        <div class="ph"><img src="8.jpg" data-full="8.jpg" alt="Foto 8" onerror="this.remove()"><span>8</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yeni bölüm: Nergis ve Sen -->
+  <section id="cicek">
+    <div class="wrap">
+      <h2>Nergis ve Sen</h2>
+      <p class="muted">Sana bir çiçek anlatsam… aslında seni anlatmış olurum.</p>
+
+      <div class="flower" style="margin-top:14px">
+        <div class="flowerImg" aria-label="Nergis fotoğrafı">
+          <img src="nergis.jpg" alt="Nergis çiçeği" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;padding:18px;color:rgba(255,255,255,.85);line-height:1.6&quot;><b>nergis.jpg</b> bulunamadı.<br>Dosyayı bu HTML ile aynı klasöre <b>nergis.jpg</b> adıyla ekle.</div>';">
+        </div>
+
+        <div class="flowerText">
+          <div class="inner">
+            <div class="k">Nergis</div>
+            <div class="v" style="margin-top:6px">Senin gibi: zarif, güzel ve anlamlı</div>
+
+            <div class="quote">
+              "Nergis çiçeği aşk çiçeği olarak da bilinir; aynı bizim aşkımız gibi…
+              Saygı ve sevgi anlamını da taşır; aynı senin harika saygılı oluşun ve
+              sevgini benden hiç esirgememen gibi.<br><br>
+              Ben her baktığımda seni hatırlıyorum Ayan… çünkü sen benim en güzel
+              baharımsın."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yeni bölüm: 16 Kelime ile Sen -->
+  <section id="kelimeler">
+    <div class="wrap">
+      <h2>16 Kelime ile Sen</h2>
+      <p class="muted">Seni tarif etmek için kelimeler yetmez ama işte bazıları…</p>
+
+      <div class="words16">
+        <div class="wordBox">Cazibe</div>
+        <div class="wordBox">Seksilik</div>
+        <div class="wordBox">Güzellik</div>
+        <div class="wordBox">Tatlılık</div>
+        <div class="wordBox">Şirinlik</div>
+        <div class="wordBox">Çalışkanlık</div>
+        <div class="wordBox">Zeka</div>
+        <div class="wordBox">İlgi</div>
+        <div class="wordBox">Aşk</div>
+        <div class="wordBox">Anlayışlılık</div>
+        <div class="wordBox">Saygı</div>
+        <div class="wordBox">Mükemmellik</div>
+        <div class="wordBox">Alçakgönüllülük</div>
+        <div class="wordBox">Narinlik</div>
+        <div class="wordBox">Duygusallık</div>
+        <div class="wordBox">Bağımlılık</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yeni bölüm: Sana Benzeyen Hayvan -->
+  <section id="hayvan">
+    <div class="wrap">
+      <h2>Sana Benzeyen Hayvan</h2>
+      <p class="muted">Bir hayvan sana benzeseydi, bu kesinlikle o olurdu…</p>
+
+      <div class="animal" style="margin-top:14px">
+        <div class="animalImg" aria-label="Japanese Flying Squirrel fotoğrafı">
+          <img src="squirrel.jpg" alt="Japanese Flying Squirrel" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;padding:18px;color:rgba(255,255,255,.85);line-height:1.6&quot;><b>squirrel.jpg</b> bulunamadı.<br>Dosyayı bu HTML ile aynı klasöre <b>squirrel.jpg</b> adıyla ekle.</div>';">
+        </div>
+
+        <div class="animalText">
+          <div class="inner">
+            <div class="k">Japanese Flying Squirrel</div>
+            <div class="v" style="margin-top:6px">Tıpkı senin gibi: sevimli, narin ve büyüleyici</div>
+
+            <div class="quote">
+              "Bu minik yaratık dünyanın en şirin hayvanlarından biri… Tıpkı senin gibi.
+              Büyük gözleri, yumuşacık tüyleri ve o masum bakışlarıyla herkesi büyülüyor.<br><br>
+              Sen de böylesin işte Ayan… Her baktığımda içim ısınıyor, gülümsemeden edemiyorum.
+              Onun gibi sen de narinsin, tatlısın ve hayatıma sıçrayıp gelen en güzel hediyesin."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="liste">
+    <div class="wrap">
+      <h2>Sana Özel 10 Şey</h2>
+      <p class="muted">Ayan, sende en sevdiğim şeylerden bazıları… (ve niceleri)</p>
+
+      <ol class="loveList">
+        <li><div><div class="liTitle">Çok anlayışlı olman</div></div></li>
+        <li><div><div class="liTitle">Aşırı komik olman</div></div></li>
+        <li><div><div class="liTitle">Çok çalışkan olman</div></div></li>
+        <li><div><div class="liTitle">Dünyanın en güzel kızı olman</div></div></li>
+        <li><div><div class="liTitle">Dünyanın en tatlı kızı olman</div></div></li>
+        <li><div><div class="liTitle">Çok zeki olman</div></div></li>
+        <li><div><div class="liTitle">Dünyanın en güzel gözlerine sahip olman</div></div></li>
+        <li><div><div class="liTitle">Benle bu kadar uyumlu olan tek kız olman</div></div></li>
+        <li><div><div class="liTitle">Çok duygusal bebeğim olman</div></div></li>
+        <li><div><div class="liTitle">Harika fiziğinin olması ve niceleri…</div></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="zaman">
+    <div class="wrap">
+      <h2>Bizim Zamanımız</h2>
+      <p class="muted">Tanıştığımız ve sevgili olduğumuz tarihten beri geçen süre.</p>
+
+      <div class="grid timeline" style="margin-top:14px">
+        <div class="card">
+          <div class="k">Tanışma</div>
+          <div class="v">20 Haziran 2025</div>
+          <div class="muted" id="sinceMeet">—</div>
+        </div>
+        <div class="card">
+          <div class="k">Sevgili olma</div>
+          <div class="v">9 Kasım 2025</div>
+          <div class="muted" id="sinceLove">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="son">
+    <div class="wrap">
+      <div class="final">
+        <div class="heart" aria-hidden="true"></div>
+        <h2>Sana bir şey söylemek istiyorum…</h2>
+        <p class="muted">
+          Ayan, iyi ki benim sevgilimsin. Bugün de, yarın da, her gün de seni seçiyorum.
+        </p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+          <button class="btn primary" onclick="yes()">Ben de 💗</button>
+          <button class="btn" id="noBtn" onmouseover="runaway()" onclick="runaway()">Hayır</button>
+        </div>
+        <div class="muted" id="finalMsg" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>Hazırlayan: <b>Talha</b> • Alıcı: <b>Ayan</b></div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lb" aria-hidden="true">
+    <button class="lbBtn lbClose" aria-label="Kapat">✕</button>
+    <button class="lbBtn lbPrev" aria-label="Önceki">‹</button>
+    <img id="lbImg" alt="Büyük fotoğraf"/>
+    <button class="lbBtn lbNext" aria-label="Sonraki">›</button>
+    <div class="lbCap" id="lbCap"></div>
+  </div>
+
+  <canvas id="c" style="position:fixed;inset:0;pointer-events:none;z-index:99"></canvas>
+
+  <script>
+    // ======================
+    // Şifre
+    // ======================
+    const PASS = "091125";
+    const bgm = document.getElementById("bgm");
+    const playBtn = document.getElementById("playBtn");
+    const musicState = document.getElementById("musicState");
+
+    function setVol(v){ bgm.volume = Number(v); }
+    setVol(document.getElementById("vol").value);
+
+    async function startMusicAfterUnlock(){
+      try{
+        await bgm.play();
+        playBtn.textContent = "⏸ Durdur";
+        musicState.textContent = "Çalıyor";
+      }catch(e){
+        playBtn.textContent = "▶︎ Başlat";
+        musicState.textContent = "Başlatmak için butona bas";
+      }
+    }
+
+    function unlock(){
+      const v = (document.getElementById("pw").value || "").trim();
+      const msg = document.getElementById("pwMsg");
+      const card = document.getElementById("lockCard");
+
+      if(v === PASS){
+        msg.textContent = "Hoş geldin Aşkım 💗";
+
+        const lockEl = document.getElementById("lock");
+        lockEl.style.opacity = "0";
+        lockEl.style.transition = "opacity .25s ease";
+
+        setTimeout(() => {
+          lockEl.style.display = "none";
+          startMusicAfterUnlock();
+        }, 280);
+
+      }else{
+        msg.textContent = "Olmadı… bir daha dene 💗";
+        card.classList.remove("shake");
+        void card.offsetWidth;
+        card.classList.add("shake");
+      }
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Enter"){
+        const lockEl = document.getElementById("lock");
+        if(lockEl && lockEl.style.display !== "none") unlock();
+      }
+    });
+
+    // ======================
+    // Music toggle
+    // ======================
+    async function toggleMusic(){
+      try{
+        if(bgm.paused){
+          await bgm.play();
+          playBtn.textContent = "⏸ Durdur";
+          musicState.textContent = "Çalıyor";
+        }else{
+          bgm.pause();
+          playBtn.textContent = "▶︎ Başlat";
+          musicState.textContent = "Durdu";
+        }
+      }catch(e){
+        musicState.textContent = "Tarayıcı engelledi — tekrar dene.";
+      }
+    }
+
+    // ======================
+    // Tarihler
+    // ======================
+    const MEET = new Date(2025, 5, 20, 0, 0, 0);
+    const LOVE = new Date(2025,10, 9, 0, 0, 0);
+
+    function getValentineTarget(){
+      const now = new Date();
+      let t = new Date(now.getFullYear(), 1, 14, 23, 59, 0);
+      if(t - now < 0) t = new Date(now.getFullYear()+1, 1, 14, 23, 59, 0);
+      return t;
+    }
+    const pad = n => String(n).padStart(2,"0");
+    function tickCountdown(){
+      const now = new Date();
+      const t = getValentineTarget();
+      const diff = t - now;
+      const s = Math.floor(diff/1000);
+      const d = Math.floor(s/86400);
+      const h = Math.floor((s%86400)/3600);
+      const m = Math.floor((s%3600)/60);
+      const ss = s%60;
+      document.getElementById("d").textContent = pad(d);
+      document.getElementById("h").textContent = pad(h);
+      document.getElementById("m").textContent = pad(m);
+      document.getElementById("s").textContent = pad(ss);
+    }
+
+    function humanSince(date){
+      const now = new Date();
+      let ms = now - date;
+      if(ms < 0) ms = 0;
+      const days = Math.floor(ms / 86400000);
+      const years = Math.floor(days / 365);
+      const months = Math.floor((days % 365) / 30);
+      const d = days - years*365 - months*30;
+      return `${days} gün (yaklaşık: ${years} yıl ${months} ay ${d} gün)`;
+    }
+    function tickSince(){
+      document.getElementById("sinceMeet").textContent = "Tanıştığımızdan beri: " + humanSince(MEET);
+      document.getElementById("sinceLove").textContent = "Sevgili olduğumuzdan beri: " + humanSince(LOVE);
+    }
+
+    tickCountdown(); tickSince();
+    setInterval(tickCountdown, 1000);
+    setInterval(tickSince, 30000);
+
+    // ======================
+    // "Hayır" kaçsın
+    // ======================
+    function runaway(){
+      const b = document.getElementById("noBtn");
+      const x = Math.random()*240 - 120;
+      const y = Math.random()*140 - 70;
+      b.style.transform = `translate(${x}px,${y}px)`;
+    }
+
+    function yes(){
+      document.getElementById("finalMsg").textContent =
+        "Kalbim şu an: 📈📈📈  Seni çok seviyorum Ayan. — Talha";
+      confetti();
+    }
+
+    // ======================
+    // Lightbox
+    // ======================
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbCap = document.getElementById("lbCap");
+    const btnClose = lb.querySelector(".lbClose");
+    const btnPrev = lb.querySelector(".lbPrev");
+    const btnNext = lb.querySelector(".lbNext");
+
+    let galleryImgs = [];
+    let currentIndex = 0;
+
+    function openLB(i){
+      currentIndex = i;
+      const im = galleryImgs[currentIndex];
+      if(!im) return;
+
+      lbImg.src = im.dataset.full || im.src;
+      lbCap.textContent = im.alt || `Foto ${currentIndex+1}`;
+      lb.classList.add("show");
+      lb.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLB(){
+      lb.classList.remove("show");
+      lb.setAttribute("aria-hidden","true");
+      lbImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    function prevLB(){ openLB((currentIndex - 1 + galleryImgs.length) % galleryImgs.length); }
+    function nextLB(){ openLB((currentIndex + 1) % galleryImgs.length); }
+
+    function initLightbox(){
+      galleryImgs = Array.from(document.querySelectorAll(".gallery .ph img"))
+        .filter(img => img.getAttribute("src"));
+      galleryImgs.forEach((img, i) => img.addEventListener("click", () => openLB(i)));
+    }
+
+    btnClose.addEventListener("click", closeLB);
+    btnPrev.addEventListener("click", prevLB);
+    btnNext.addEventListener("click", nextLB);
+
+    lb.addEventListener("click", (e) => { if(e.target === lb) closeLB(); });
+    window.addEventListener("keydown", (e) => {
+      if(!lb.classList.contains("show")) return;
+      if(e.key === "Escape") closeLB();
+      if(e.key === "ArrowLeft") prevLB();
+      if(e.key === "ArrowRight") nextLB();
+    });
+    initLightbox();
+
+    // ======================
+    // Confetti hearts
+    // ======================
+    const canvas = document.getElementById("c");
+    const ctx = canvas.getContext("2d");
+    function resize(){
+      canvas.width = innerWidth * devicePixelRatio;
+      canvas.height = innerHeight * devicePixelRatio;
+    }
+    addEventListener("resize", resize); resize();
+
+    let parts = [];
+    function heartPath(x,y,s){
+      ctx.save();
+      ctx.translate(x,y); ctx.scale(s,s);
+      ctx.beginPath();
+      ctx.moveTo(0, 0.35);
+      ctx.bezierCurveTo(-0.5, -0.1, -0.6, 0.55, 0, 0.95);
+      ctx.bezierCurveTo(0.6, 0.55, 0.5, -0.1, 0, 0.35);
+      ctx.closePath();
+      ctx.restore();
+    }
+    function confetti(){
+      const n = 70;
+      for(let i=0;i<n;i++){
+        parts.push({
+          x: Math.random()*innerWidth,
+          y: -20 - Math.random()*200,
+          vy: 1.5 + Math.random()*3.2,
+          vx: -1 + Math.random()*2,
+          r: 10 + Math.random()*14,
+          a: 0.65 + Math.random()*0.35,
+        });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.save();
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      parts = parts.filter(p => p.y < innerHeight + 80);
+      for(const p of parts){
+        p.x += p.vx; p.y += p.vy;
+        ctx.globalAlpha = p.a;
+        ctx.fillStyle = "rgba(255,77,109,1)";
+        heartPath(p.x, p.y, p.r/40);
+        ctx.fill();
+      }
+      ctx.restore();
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
